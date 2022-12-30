@@ -20,9 +20,9 @@ function showSuccess(input) {
 }
 
 function checkEmail(input) {
-    const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     // return re.test(String(input).toLowerCase());
-    if(re.test(input.value.trim())) {
+    if(re.test(String(input.value).trim().toLowerCase())) {
         showSuccess(input);
     } else {
         showError(input, 'Email is not valid');
@@ -47,7 +47,7 @@ function checkLength(input, min, max) {
     } else if(input.value.length > max) {
         showError(input, `${getFieldName(input)} must be less than ${max} characters`);
     } else {
-        showSuccess();
+        showSuccess(input);
     }
 }
 
